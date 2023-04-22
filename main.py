@@ -1,11 +1,13 @@
 import pygame as pg
 import sys
-from settings import *
 
 from map import *
 from player import *
+from settings import *
 from raycasting import *
 from object_renderer import *
+from sprite_object import *
+from object_handler import *
 
 
 class Game:
@@ -28,11 +30,19 @@ class Game:
         self.object_renderer = ObjectRenderer(self)
         # instance of ray casting method
         self.raycasting = RayCasting(self)
+        self.object_handler = ObjectHandler(self)
+        # instance of sprite object
+        # self.static_sprite = SpriteObject(self)
+        # instance of animated sprites
+        # self.animated_sprite = AnimatedSprite(self)
 
     # update screen and display information
     def update(self):
         self.player.update()
         self.raycasting.update()
+        self.object_handler.update()
+        # self.static_sprite.update()
+        # self.animated_sprite.update()
         pg.display.flip()
         self.delta_time = self.clock.tick(FPS)
         pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
