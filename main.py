@@ -12,6 +12,7 @@ class Game:
     def __init__(self):
         # render screen and clock for frame rate
         pg.init()
+        pg.mouse.set_visible(False)
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
         # get delta of time
@@ -38,7 +39,7 @@ class Game:
 
     def draw(self):
         # make a black screen
-        self.screen.fill('black')
+        # self.screen.fill('black')  # no longer needed after draw_background method
         self.object_renderer.draw()
         # draw map
         # self.map.draw()
